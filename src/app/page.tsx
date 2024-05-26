@@ -1,7 +1,9 @@
 export default function Home() {
   return (
-    <div className=' items-center justify-center'>
-      <p className='max-w-lg mx-auto font-bold text-xl'>Home page</p>
-    </div>
+    <main className=' relative flex items-center justify-center bg-black-100'>
+      <p className='max-w-lg mx-auto font-semibold text-xl text-white'>
+        Home Page
+      </p>
+    </main>
   );
 }
