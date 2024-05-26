@@ -1,5 +1,6 @@
 {
   "semi": true,
+  "doubleQuotes": true,
   "trailingComma": "all",
   "jsxSingleQuote": true,
   "arrowParens": "avoid",
