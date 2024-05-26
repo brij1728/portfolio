@@ -1,4 +1,4 @@
-import { Hero } from '@/components';
+import { Hero, ThemeToggle } from '@/components';
 
 export default function Home() {
   return (
@@ -7,6 +7,7 @@ export default function Home() {
         <p className='max-w-lg mx-auto font-semibold text-xl text-white'>
           Home Page
         </p>
+        <ThemeToggle />
         <Hero />
       </div>
     </main>
