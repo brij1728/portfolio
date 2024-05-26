@@ -16,7 +16,7 @@ interface TailwindPluginAPI {
 }
 
 const config: Config = {
-  darkMode: ['class'],
+  darkMode: 'class', // Ensure this is set to 'class'
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
