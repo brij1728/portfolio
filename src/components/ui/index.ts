@@ -6,3 +6,5 @@ export * from './DropdownMenuTrigger';
 export * from './DropdownMenuContent';
 export * from './TextGenerateEffect';
 export * from './MagicButton';
+export * from './FloatingNav';
+export * from './BentoGrid';

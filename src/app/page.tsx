@@ -1,4 +1,7 @@
-import { Hero, ThemeToggle } from '@/components';
+import { Grid, Hero, ThemeToggle } from '@/components';
+
+import { FaHome } from 'react-icons/fa';
+import { FloatingNav } from '@/components/ui';
 
 export default function Home() {
   return (
@@ -8,7 +11,11 @@ export default function Home() {
           Home Page
         </p>
         <ThemeToggle />
+        <FloatingNav
+          navItems={[{ name: 'Home', link: '/', icon: <FaHome /> }]}
+        />
         <Hero />
+        <Grid />
       </div>
     </main>
   );
