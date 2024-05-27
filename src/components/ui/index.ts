@@ -8,3 +8,4 @@ export * from './TextGenerateEffect';
 export * from './MagicButton';
 export * from './FloatingNav';
 export * from './BentoGrid';
+export * from './3d-pin';
