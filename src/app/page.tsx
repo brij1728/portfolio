@@ -5,11 +5,11 @@ import { FloatingNav } from '@/components/ui';
 
 export default function Home() {
   return (
-    <main className=' relative flex  flex-col overflow-hidden mx-auto sm:px-10 px-5 items-center justify-center bg-black-100'>
-      <div className='z-10'>
-        <ThemeToggle />
-      </div>
+    <main className='relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5'>
       <div className='max-w-7xl w-full'>
+        <div className='z-10'>
+          <ThemeToggle />
+        </div>
         <FloatingNav
           navItems={[{ name: 'Home', link: '/', icon: <FaHome /> }]}
         />
