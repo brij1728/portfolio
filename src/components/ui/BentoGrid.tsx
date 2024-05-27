@@ -54,6 +54,8 @@ export const BentoGridItem: React.FC<BentoGridItemProps> = ({
   spareImg,
   id,
 }) => {
+  const leftLists = ['ReactJS', 'NextJS', 'Typescript', 'TailwindCSS'];
+  const rightLists = ['NodeJS', 'Express', 'MongoDB', 'Prisma'];
   const [copied, setCopied] = useState(false);
 
   const defaultOptions = {
@@ -139,29 +141,16 @@ export const BentoGridItem: React.FC<BentoGridItemProps> = ({
 
           {id === 2 && <GlobeDemo />}
           {id === 3 && (
-            <div className='flex gap-1 w-fit absolute -right-3 lg:-right-2 lg:gap-5'>
-              <div className='flex flex-col gap-3'>
-                {['React', 'Next.js', 'TailwindCSS', 'TypeScript'].map(item => (
-                  <span
-                    key={item}
-                    className='py-2 px-3 text-xs rounded-lg text-center bg-[#10132E] opacity-50 lg:opacity-100 lg:py-4 lg:px-3 lg:text-base'
-                  >
-                    {item}
-                  </span>
-                ))}
-                <span className='py-4 px-3 rounded-lg text-center bg-[#10132E]'></span>
-              </div>
-              <div className='flex flex-col gap-3'>
-                <span className='py-4 px-3 rounded-lg text-center bg-[#10132E]'></span>
-                {['React', 'Next.js', 'TailwindCSS', 'TypeScript'].map(item => (
-                  <span
-                    key={item}
-                    className='py-2 px-3 text-xs rounded-lg text-center bg-[#10132E] opacity-50 lg:opacity-100 lg:py-4 lg:px-3 lg:text-base'
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+            <div className='flex flex-wrap gap-2 lg:gap-4 mt-4'>
+              {/* tech stack lists */}
+              {leftLists.concat(rightLists).map((item, i) => (
+                <span
+                  key={i}
+                  className='py-2 px-3 text-xs lg:text-base opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E] whitespace-nowrap'
+                >
+                  {item}
+                </span>
+              ))}
             </div>
           )}
           {id === 6 && (
