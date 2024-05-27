@@ -7,15 +7,30 @@ export const Grid = () => {
   return (
     <section>
       <BentoGrid>
-        {gridItems.map((item, index) => (
-          <BentoGridItem
-            key={index}
-            title={item.title}
-            description={item.description}
-            icon={item.title}
-            id={index}
-          />
-        ))}
+        {gridItems.map(
+          ({
+            id,
+            title,
+            description,
+            className,
+            img,
+            imgClassName,
+            titleClassName,
+            spareImg,
+          }) => (
+            <BentoGridItem
+              key={id}
+              title={title}
+              description={description}
+              id={id}
+              className={className}
+              img={img}
+              imgClassName={imgClassName}
+              titleClassName={titleClassName}
+              spareImg={spareImg}
+            />
+          ),
+        )}
       </BentoGrid>
     </section>
   );
