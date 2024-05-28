@@ -35,8 +35,8 @@ interface BentoGridItemProps {
   className?: string;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
-  imgSrc?: string; // Dedicated prop for image sources
-  img?: React.ReactNode; // For other image content or complex JSX
+  imgSrc?: string;
+  img?: React.ReactNode;
   imgClassName?: string;
   titleClassName?: string;
   spareImg?: string;
@@ -68,11 +68,13 @@ export const BentoGridItem: React.FC<BentoGridItemProps> = ({
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText('bk10895@gmail.com');
-    setCopied(true);
-    setTimeout(() => {
-      setCopied(false);
-    }, 2000);
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText('bk10895@gmail.com');
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    }
   };
 
   return (
@@ -82,7 +84,7 @@ export const BentoGridItem: React.FC<BentoGridItemProps> = ({
         className,
       )}
       style={{
-        background: 'rgba(4,7, 29)',
+        background: 'rgba(4,7,29)',
         backgroundColor:
           'linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)',
       }}
@@ -142,7 +144,6 @@ export const BentoGridItem: React.FC<BentoGridItemProps> = ({
           {id === 2 && <GlobeDemo />}
           {id === 3 && (
             <div className='flex flex-wrap gap-2 lg:gap-4 mt-4'>
-              {/* tech stack lists */}
               {leftLists.concat(rightLists).map((item, i) => (
                 <span
                   key={i}
