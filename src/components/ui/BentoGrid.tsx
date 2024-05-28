@@ -1,14 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { BackgroundGradientAnimation } from './GradientBg';
 import { GlobeDemo } from './GridGlobe';
 import { IoCopyOutline } from 'react-icons/io5';
-import Lottie from 'react-lottie';
 import { MagicButton } from './MagicButton';
 import animationData from '../../../data/confetti.json';
 import { cn } from '@/utils/cn';
+import dynamic from 'next/dynamic';
+
+const Lottie = dynamic(() => import('react-lottie-player'), { ssr: false });
 
 interface BentoGridProps {
   className?: string;
@@ -57,15 +59,11 @@ export const BentoGridItem: React.FC<BentoGridItemProps> = ({
   const leftLists = ['ReactJS', 'NextJS', 'Typescript', 'TailwindCSS'];
   const rightLists = ['NodeJS', 'Express', 'MongoDB', 'Prisma'];
   const [copied, setCopied] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
-  const defaultOptions = {
-    loop: copied,
-    autoplay: copied,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  };
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleCopy = () => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
@@ -154,12 +152,17 @@ export const BentoGridItem: React.FC<BentoGridItemProps> = ({
               ))}
             </div>
           )}
-          {id === 6 && (
+          {id === 6 && isClient && (
             <div className='mt-5 relative'>
               <div
                 className={`absolute -bottom-5 right-0 ${copied ? 'block' : 'block'}`}
               >
-                <Lottie options={defaultOptions} height={200} width={400} />
+                <Lottie
+                  play={copied}
+                  loop={copied}
+                  animationData={animationData}
+                  style={{ height: '200px', width: '400px' }}
+                />
               </div>
               <MagicButton
                 title={copied ? 'Email is Copied!' : 'Copy my Email'}

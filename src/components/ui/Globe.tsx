@@ -65,7 +65,7 @@ interface WorldProps {
 
 let numbersOfRings = [0];
 
-export function Globe({ globeConfig, data }: WorldProps) {
+const Globe = ({ globeConfig, data }: WorldProps) => {
   const [globeData, setGlobeData] = useState<
     | {
         size: number;
@@ -128,15 +128,15 @@ export function Globe({ globeConfig, data }: WorldProps) {
         size: defaultProps.pointSize,
         order: arc.order,
         color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
-        lat: arc.startLat,
-        lng: arc.startLng,
+        lat: validateNumber(arc.startLat),
+        lng: validateNumber(arc.startLng),
       });
       points.push({
         size: defaultProps.pointSize,
         order: arc.order,
         color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
-        lat: arc.endLat,
-        lng: arc.endLng,
+        lat: validateNumber(arc.endLat),
+        lng: validateNumber(arc.endLng),
       });
     }
 
@@ -151,6 +151,14 @@ export function Globe({ globeConfig, data }: WorldProps) {
     );
 
     setGlobeData(filteredPoints);
+  };
+
+  const validateNumber = (value: number): number => {
+    if (isNaN(value)) {
+      console.error(`Invalid number detected: ${value}. Replacing with 0.`);
+      return 0;
+    }
+    return value;
   };
 
   useEffect(() => {
@@ -233,7 +241,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       <threeGlobe ref={globeRef} />
     </>
   );
-}
+};
 
 export function WebGLRendererConfig() {
   const { gl, size } = useThree();
@@ -247,7 +255,7 @@ export function WebGLRendererConfig() {
   return null;
 }
 
-export function World({ globeConfig, data }: WorldProps) {
+const World = ({ globeConfig, data }: WorldProps) => {
   const scene = new Scene();
   scene.fog = new Fog(0xffffff, 400, 2000);
 
@@ -292,7 +300,9 @@ export function World({ globeConfig, data }: WorldProps) {
       />
     </Canvas>
   );
-}
+};
+
+export default World;
 
 export function hexToRgb(hex: string) {
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
@@ -324,7 +334,7 @@ function createNumberAccessor(key: keyof Position): ObjAccessor<number> {
   return (obj: object): number => {
     const genericObj = obj as GenericObject; // Cast to GenericObject
     if (key in genericObj && typeof genericObj[key] === 'number') {
-      return genericObj[key] as number;
+      return validateNumber(genericObj[key] as number);
     }
     throw new Error(
       `Object does not have a valid '${key}' property or it is not a number`,
@@ -346,3 +356,11 @@ function computeColorBasedOnTime(time: number): string {
   const colors = ['red', 'green', 'blue', 'yellow'];
   return colors[Math.floor(time) % colors.length];
 }
+
+const validateNumber = (value: number): number => {
+  if (isNaN(value)) {
+    console.error(`Invalid number detected: ${value}. Replacing with 0.`);
+    return 0;
+  }
+  return value;
+};
