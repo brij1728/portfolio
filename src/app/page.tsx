@@ -1,4 +1,4 @@
-import { Clients, Grid, Hero, RecentProjects } from '@/components';
+import { Clients, Experience, Grid, Hero, RecentProjects } from '@/components';
 
 import { FloatingNav } from '@/components/ui';
 import { navItems } from '../../data';
@@ -12,6 +12,7 @@ export default function Home() {
         <Grid />
         <RecentProjects />
         <Clients />
+        <Experience />
       </div>
     </main>
   );
