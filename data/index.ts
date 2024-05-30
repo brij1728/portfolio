@@ -210,13 +210,16 @@ export const socialMedia = [
   {
     id: 1,
     img: '/git.svg',
+    name: 'github',
   },
   {
     id: 2,
     img: '/twit.svg',
+    name: 'x',
   },
   {
     id: 3,
     img: '/link.svg',
+    name: 'linkedin',
   },
 ];

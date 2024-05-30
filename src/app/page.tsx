@@ -2,6 +2,7 @@ import {
   Approach,
   Clients,
   Experience,
+  Footer,
   Grid,
   Hero,
   RecentProjects,
@@ -21,6 +22,7 @@ export default function Home() {
         <Clients />
         <Experience />
         <Approach />
+        <Footer />
       </div>
     </main>
   );

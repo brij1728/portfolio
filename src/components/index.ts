@@ -5,3 +5,4 @@ export * from './RecentProjects';
 export * from './Clients';
 export * from './Experience';
 export * from './Approach';
+export * from './Footer';
