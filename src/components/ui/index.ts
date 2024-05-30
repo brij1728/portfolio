@@ -10,3 +10,4 @@ export * from './BentoGrid';
 export * from './3d-pin';
 export * from './InfiniteMovingCards';
 export * from './MovingBorders';
+export * from './CanvasRevealEffect';
