@@ -211,15 +211,18 @@ export const socialMedia = [
     id: 1,
     img: '/git.svg',
     name: 'github',
+    url: 'https://github.com/brij1728',
   },
   {
     id: 2,
-    img: '/twit.svg',
-    name: 'x',
+    img: '/link.svg',
+    name: 'linkedin',
+    url: 'https://www.linkedin.com/in/brijeshapp/',
   },
   {
     id: 3,
-    img: '/link.svg',
-    name: 'linkedin',
+    img: '/xxx.svg',
+    name: 'x',
+    url: 'https://x.com/bk10895',
   },
 ];
